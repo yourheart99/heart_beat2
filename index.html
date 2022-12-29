@@ -132,7 +132,7 @@
   <canvas id="canvas" width="1707" height="868"></canvas>
 
   <script>
-    function fillText () {
+    function fillText() {
       const colorss = [
         "#f03752",
         "#8fb7d3",
@@ -245,11 +245,11 @@
         wh = window.innerHeight;
       });
     }
-    function heartBeat(){
+    function heartBeat() {
       /*
        * Settings
        */
-       var settings = {
+      var settings = {
         particles: {
           length: 500, // maximum amount of particles
           duration: 2, // particle duration in sec
@@ -438,10 +438,10 @@
           return new Point(
             160 * Math.pow(Math.sin(t), 3),
             130 * Math.cos(t) -
-              50 * Math.cos(2 * t) -
-              20 * Math.cos(3 * t) -
-              10 * Math.cos(4 * t) +
-              25
+            50 * Math.cos(2 * t) -
+            20 * Math.cos(3 * t) -
+            10 * Math.cos(4 * t) +
+            25
           );
         }
 
@@ -560,13 +560,19 @@
           heartAni.classList.add('heart')
         }
       }
+      var scaleSize = 8;
+      var xscaleSize = 16;
+      if (navigator.userAgent.includes('Mobile')) {
+        scaleSize = 2;
+        xscaleSize = 48;
+      }
 
       function calX(p) {
-        return 8 * 16 * Math.pow(Math.sin(p), 3);
+        return scaleSize * xscaleSize * Math.pow(Math.sin(p), 3);
       }
 
       function calY(q) {
-        return -8 * (13 * Math.cos(q) - 5 * Math.cos(2 * q) - 2 * Math.cos(3 * q) - Math.cos(4 * q));
+        return -scaleSize * (13 * Math.cos(q) - 5 * Math.cos(2 * q) - 2 * Math.cos(3 * q) - Math.cos(4 * q));
       }
       var time = setInterval(draw, 10);
     })();
